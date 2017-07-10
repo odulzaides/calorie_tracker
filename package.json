@@ -8,7 +8,9 @@
     "replace-scripts:build": "sed -i.bak s/bundle.js/bundle.min.js/g  index.html && rm index.html.bak",
     "start": "npm run replace-scripts:dev && open http://localhost:8080 && webpack-dev-server -d --progress --colors",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run replace-scripts:build && webpack && uglify -s ./bundle.js -o ./bundle.min.js"
+    "build": "npm run replace-scripts:build && webpack && uglify -s ./bundle.js -o ./bundle.min.js",
+    "json-server": "json-server data/db.json ",
+    "start-dev": "npm run json-server | npm run replace-scripts:dev && open http://localhost:8080 && webpack-dev-server -d --progress --colors"
   },
   "author": "odulzaides <dulzaides.oscar@gmail.com>",
   "license": "ISC",
