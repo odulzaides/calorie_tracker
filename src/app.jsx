@@ -1,17 +1,32 @@
 'use strict';
+import $ from 'jquery';
 import React from 'react';
 import Form from './components/form.jsx';
-import Table from './components/cal_table.jsx';
+import Calender from './components/calender.jsx';
+import axios from 'axios';
 
-let App = React.createClass({
-  render : function(){
+
+
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {calender: []};
+
+  }
+  componentWillMount() {
+    axios.get('http://localhost:3000/tracker')
+      .then(response => this.setState({calender:response.data}));
+    
+  }
+  render() {
+    console.log(this.state.calender)
     return (
       <div>
-       <Form />
-       <Table />
+        <Form />
+        <Calender days={this.state.calender}/>
       </div>
     );
   }
-});
+}
 
-module.exports = App;

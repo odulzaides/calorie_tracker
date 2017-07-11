@@ -1,0 +1,17 @@
+ul {
+    display:flex;
+    list-style: none;
+}
+
+ul li {
+    padding:1em;
+    border:1px solid #000;
+    position:relative;
+    width:12%;
+    min-width: 15%;
+}
+
+ul li p:first-child {
+    position:absolute;
+    top:2px;
+}

@@ -1,23 +1,18 @@
 'use strict';
 import React from 'react';
 import $ from 'jquery';
+import axios from 'axios';
 
 export default class Form extends React.Component {
     constructor (props){
         super(props);
     }
     addRecord () {
-        alert("Called");
-                    $.ajax({
-                url: 'http://localhost:3000/tracker',
-                type: 'POST',
-                contenttype: 'application/json; charset=utf-8',
-                data: {
+        axios.post('http://localhost:3000/tracker',{
                     "date": $('#date').val(),
                     "calories": $('#calories').val(),
-                },
-                datatype: 'JSON'
-            });
+                })
+                .then(()=> console.log("here "))    
     }
     render (){
         return (
@@ -33,3 +28,15 @@ export default class Form extends React.Component {
         )
     }
 }
+
+
+ //         $.ajax({
+            //     url: 'http://localhost:3000/tracker',
+            //     type: 'POST',
+            //     contenttype: 'application/json; charset=utf-8',
+            //     data: {
+            //         "date": $('#date').val(),
+            //         "calories": $('#calories').val(),
+            //     },
+            //     datatype: 'JSON'
+            // });
